@@ -7,7 +7,7 @@ namespace ContainsDuplicates
 	{
 		public static void Main(String[] args)
 		{
-			int[] nums = {1,2,3,4};
+			int[] nums = {1,1,2,3,4};
 			var result = ContainsDuplicate(nums);
 			if(result)
 			{
