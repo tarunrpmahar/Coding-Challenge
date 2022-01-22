@@ -9,7 +9,7 @@ public class Solution {
             if(nums[i]!=nums[i-1])
             {
                 nums[k] = nums[i];
-                k=k+1;
+                k++;
             }
         }
         return k;
