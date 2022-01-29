@@ -1,6 +1,6 @@
 using System;
 
-namespace FirstProgram
+namespace CodingChallenge
 {
     class Program
     {
