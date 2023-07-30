@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CodingChallenge
 {
@@ -115,7 +116,7 @@ namespace CodingChallenge
 
     public class PrimeNumber
     {
-        public void isPrimeNumber()
+        public static void isPrimeNumber()
         {
             Console.Write("Enter number of testcases you want - ");
             int numberOfTestCases = Convert.ToInt32(Console.ReadLine());
@@ -158,12 +159,63 @@ namespace CodingChallenge
         }
     }
 
+    public class PrintAllDivisor
+    {
+        public void Start()
+        {
+            Console.Write("Enter number of testcases you want - ");
+            int numberOfTestCases = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < numberOfTestCases; i++)
+            {
+                Console.WriteLine("Enter the number for which you want to find all divisor - ");
+                int n = Convert.ToInt32(Console.ReadLine());
+                List<int> allDivisors = printDivisors(n);
+                Console.WriteLine("All divisos of {0} are",n);
+                foreach(var divisor in allDivisors)
+                {
+                    Console.WriteLine(divisor);
+                }
+            }
+        }
+
+        public static List<int> printDivisors(int n)
+        {
+            var divisor = new List<int>();
+
+            //Brute Force - TC = O(n)
+            //for (int i = 1; i <= n; i++)
+            //{
+            //    if(n%i==0)
+            //    {
+            //        divisor.Add(i);
+            //    }
+            //}
+
+            //Better approach - TC = O(sqrt(n))
+            for (int i = 1; i <= Math.Sqrt(n); i++)
+            {
+                if(n%i==0)
+                {
+                    divisor.Add(i);
+                    if(i != n/i)
+                    {
+                        divisor.Add(n/i);
+                    }
+                }
+            }
+
+            return divisor;
+        }
+    }
+
     public class BasicMathsProblem
     {
         public static void Main(string[] args)
         {
-            PrimeNumber primeNumber = new PrimeNumber();
-            primeNumber.isPrimeNumber();
+            PrintAllDivisor printAllDivisor = new PrintAllDivisor();
+            printAllDivisor.Start();
+
+            //PrimeNumber.isPrimeNumber();
 
             ArmstrongNumber armstrongNumber = new ArmstrongNumber();
             //armstrongNumber.checkArmstrong();
